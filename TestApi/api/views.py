@@ -24,14 +24,16 @@ def controller(request):
     if request.method == "DELETE":
         return delete_patient(request, util)
     
-    
+def test(request):
+    return render(request, "index.html")    
+
 @csrf_exempt
 def get_patient(request, util):
     """
     Get a patient with a given name
     """
     try:
-        patient = serializers.serialize('json', [util.get_patient()], fields=('name','size'))
+        patient = serializers.serialize('json', [util.get_patient()], fields=('name','weight'))
     except:
         return HttpResponse(status=404)
     
@@ -63,6 +65,7 @@ def update_patient(request, util):
 
     patient_to_update = util.get_patient()
     patient_to_update.weight = util.weight
+    patient_to_update.save()
 
     return HttpResponse(status=204)
 
