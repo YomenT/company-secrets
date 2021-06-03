@@ -3,5 +3,5 @@ from . import views as apiviews
 
 app_name = "api"
 urlpatterns = [
-    path('', apiviews.index, name="index")
+    path('', apiviews.controller, name="controller")
 ]
