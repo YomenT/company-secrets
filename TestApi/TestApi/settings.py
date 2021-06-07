@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
+    'results.apps.ResultsConfig',
+    'tests.apps.TestsConfig',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
