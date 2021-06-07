@@ -17,10 +17,12 @@ def index(request, patient=None, test=None):
         else:
             tests = list(Test.objects.all())
             patient = Patient.objects.get(name=patient)
-            results = Result.objects.filter(patient=patient)
             if test is not None:
+                print("HERE")
                 test = Test.objects.get(test_name=test, patient=patient)
-                results.filter(test=test)
+                results = Result.objects.filter(patient=patient, test=test)
+            else:
+                results = Result.objects.filter(patient=patient)
         
 
         res = serializers.serialize('json', results, use_natural_foreign_keys=True, use_natural_primary_keys=True)
