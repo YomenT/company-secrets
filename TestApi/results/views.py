@@ -23,5 +23,5 @@ def index(request, patient=None, test=None):
                 results.filter(test=test)
         
 
-        res = serializers.serialize('json', results)
+        res = serializers.serialize('json', results, use_natural_foreign_keys=True, use_natural_primary_keys=True)
         return JsonResponse(res, safe=False)

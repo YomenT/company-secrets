@@ -11,5 +11,6 @@ def index(request, patient=None):
         else: 
             patient = Patient.objects.get(name=patient)
             tests = Test.objects.filter(patient=patient)
-        res = serializers.serialize('json', tests)
+        res = serializers.serialize('json', tests, use_natural_foreign_keys=True, use_natural_primary_keys=True)
         return JsonResponse(res, safe=False)
+
